@@ -1,0 +1,170 @@
+* {
+  /*reset browser settings */
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
+}
+
+:root {
+  --blue500: hsl(215, 51%, 70%);
+  --cyan400: hsl(178, 100%, 50%);
+  --blue950: hsl(217, 54%, 11%);
+  --blue900: hsl(216, 50%, 16%);
+  --blue800: hsl(215, 32%, 27%);
+  --white: hsl(0, 0%, 100%);
+  --mainFont: "Outfit", sans-serif;
+}
+
+.app {
+  min-height: 100vh;
+
+  background: var(--blue950);
+  font-family: var(--mainFont);
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+
+.nft-card {
+  background: var(--blue900);
+  padding: 1rem;
+  border-radius: 1rem;
+  box-shadow: 0px 0px 10px black, 0px 0px 20px black;
+  display: flex;
+  align-items: flex-start;
+  justify-content: center;
+  flex-direction: column;
+}
+
+.main-img-div {
+  width: 300px;
+  aspect-ratio: 1/1;
+  border-radius: 1rem;
+  position: relative;
+  cursor: pointer;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+
+.main-img-div::after {
+  content: "";
+  inset: 0;
+  background: var(--cyan400);
+  position: absolute;
+  border-radius: 1rem;
+  opacity: 0;
+  transition: 0.25s ease;
+}
+
+.eye-icon-div {
+  position: absolute;
+  width: 50px;
+  height: 50px;
+  z-index: 5;
+  transform: translateY(-5rem) scaleY(0);
+  transition: 0.5s 0.25s;
+}
+
+.eye-icon {
+  transition: 0.5s linear;
+  transform-origin: top;
+}
+
+.main-img-div:hover .eye-icon-div {
+  transform: translateY(0rem) scaleY(1);
+}
+
+.main-img-div:hover::after {
+  animation: animateblur 1s forwards;
+}
+
+@keyframes animateblur {
+  100% {
+    opacity: 50%;
+    filter: blur(5px);
+  }
+}
+
+.main-img-div img {
+  height: 100%;
+  width: 100%;
+  border-radius: 1rem;
+}
+
+.card-middle-section {
+  padding: 1rem 0;
+  display: flex;
+  flex-direction: column;
+  gap: 1rem;
+  width: 100%;
+  border-bottom: 1px solid var(--blue500);
+  margin-bottom: 1rem;
+}
+
+h1 {
+  color: var(--white);
+  font-size: 1.15rem;
+}
+
+.blurb {
+  width: 300px;
+}
+
+.meta-row {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+}
+
+.meta-col {
+  display: flex;
+  gap: 0.5rem;
+}
+
+.cyan-text {
+  color: var(--cyan400);
+}
+
+.blue-text {
+  color: var(--blue500);
+}
+
+.thin {
+  font-weight: 300;
+}
+
+.user-img-name-row {
+  display: flex;
+  align-items: center;
+  justify-content: flex-start;
+  gap: 1rem;
+}
+
+.user-img-div {
+  height: 40px;
+  width: 40px;
+  position: relative;
+  border: 2px solid white;
+  border-radius: 50%;
+  transition: 0.25s ease;
+  overflow: hidden;
+}
+
+.user-img-div:hover {
+  box-shadow: 2px 2px 5px var(--cyan400);
+}
+
+.user-img-div:hover img {
+  transform: scale(1.2) rotate(5deg);
+}
+
+.user-img-div img {
+  height: 100%;
+  width: 100%;
+  transition: 0.25s ease;
+}
+
+.person-name {
+  color: var(--white);
+}
