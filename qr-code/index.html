@@ -1,0 +1,79 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <!-- displays site properly based on user's device -->
+
+    <link
+      rel="icon"
+      type="image/png"
+      sizes="32x32"
+      href="./images/favicon-32x32.png"
+    />
+    <link rel="preconnect" href="https://fonts.googleapis.com" />
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+    <link
+      href="https://fonts.googleapis.com/css2?family=Outfit:wght@100..900&display=swap"
+      rel="stylesheet"
+    />
+    <title>Frontend Mentor | QR code component</title>
+    <!-- Feel free to remove these styles or customise in your own stylesheet 👍 -->
+
+    <link rel="stylesheet" href="style.css" />
+  </head>
+  <body>
+    <div class="app">
+      <section class="qr-card">
+        <div class="qr-img-div">
+          <img src="images/image-qr-code.png" alt="qr-code" />
+          <div class="qr-img-slice qr-img-slice-1"></div>
+          <div class="qr-img-slice qr-img-slice-2"></div>
+          <div class="qr-img-slice qr-img-slice-3"></div>
+          <div class="qr-img-slice qr-img-slice-4"></div>
+          <div class="qr-img-slice qr-img-slice-5"></div>
+          <div class="qr-img-slice qr-img-slice-6"></div>
+          <div class="qr-img-slice qr-img-slice-7"></div>
+          <div class="qr-img-slice qr-img-slice-8"></div>
+          <div class="qr-img-slice qr-img-slice-9"></div>
+          <div class="qr-img-slice qr-img-slice-10"></div>
+        </div>
+        <h1>Improve your front-end skills by building projects</h1>
+        <p>
+          Scan the QR code to visit Frontend Mentor and take your coding skills
+          to the next level
+        </p>
+      </section>
+    </div>
+
+    <div class="attribution">
+      Challenge by
+      <a href="https://www.frontendmentor.io?ref=challenge" target="_blank"
+        >Frontend Mentor</a
+      >. Coded by
+      <a target="_blank" href="https://www.youtube.com/@PictureThisCoding"
+        >PictureThisCoding</a
+      >.
+    </div>
+    <script>
+      let h1El = document.querySelector("h1"); //target our h1 element
+      let h1Text = h1El.textContent; // get the text  value
+      console.log(h1Text);
+      h1El.textContent = "";
+      for (let i = 0; i < h1Text.length; i++) {
+        //iterating over the length of the string and
+        //creating a new span element and populating it with the
+        // letter value and assigning it a css class to allow animation
+        // we will use the counter (i) as a means of assigning a delay for
+        // a staggered effect.
+        let span = document.createElement("span");
+        span.textContent = h1Text[i];
+        span.className = "animate-h1-letter";
+        if (h1Text[i] == " ") span.classList.add("space"); //factor in for the space
+
+        span.style.setProperty("--delay", `${i / 20}s`);
+        h1El.appendChild(span);
+      }
+    </script>
+  </body>
+</html>
