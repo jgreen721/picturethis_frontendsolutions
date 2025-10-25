@@ -1,0 +1,253 @@
+* {
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
+}
+
+:root {
+  --white: hsl(0, 100%, 100%);
+  --grey500: hsl(217, 12%, 63%);
+  --grey900: hsl(213, 19%, 18%);
+  --grey950: hsl(216, 12%, 8%);
+  --orange: hsl(25, 97%, 53%);
+  --mainFont: "Overpass", sans-serif;
+}
+
+.app {
+  height: 100vh;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  background: var(--grey950);
+  font-family: var(--mainFont);
+  color: var(--white);
+}
+
+.survey-card-parent {
+  width: clamp(30%, 400px, 90%); /*responsive*/
+  transform: translateY(-5rem);
+  opacity: 0;
+  animation: introcard 1s 1s cubic-bezier(0.175, 0.885, 0.32, 1.275) forwards;
+}
+
+@keyframes introcard {
+  100% {
+    opacity: 1;
+    transform: scale(1) translateY(0rem);
+  }
+}
+
+.survey-card {
+  background: linear-gradient(var(--grey900) 2%, var(--grey950) 25%);
+  box-shadow: 3px 3px 10px var(--grey500);
+  border-radius: 1rem;
+  border: 2px solid white;
+  position: relative;
+  transform-style: preserve-3d;
+  transition: 0.5s ease;
+}
+
+.flip-card {
+  transform: rotateY(180deg);
+}
+
+.card-side {
+  padding: 2rem;
+  display: flex;
+  align-items: flex-start;
+  justify-content: center;
+  flex-direction: column;
+  gap: 2rem;
+  backface-visibility: hidden;
+}
+
+.back {
+  position: absolute;
+  top: 0;
+  transform: rotateY(180deg);
+  text-align: center;
+  align-items: center;
+}
+
+.back h4 {
+  color: var(--orange);
+  background: var(--grey900);
+  border-radius: 1rem;
+  padding: 0.5rem 2rem;
+  font-weight: 200;
+}
+
+.user-rating {
+  font-weight: 600;
+  font-size: 1.2rem;
+  background: var(--grey950);
+  padding: 0.25rem;
+  border-radius: 0.25rem;
+  box-shadow: 0px 0px 2px var(--white);
+  margin: 0 0.5rem;
+}
+
+.card-back-img-div {
+  position: relative;
+  z-index: 2;
+}
+
+.shadow-img {
+  position: absolute;
+  filter: blur(5px);
+  transform: scale(1.05);
+  inset: 0;
+  z-index: -1;
+}
+
+.logo-star-div {
+  height: 50px;
+  width: 50px;
+  background: var(--grey900);
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  border-radius: 50%;
+}
+
+h1 {
+  font-size: 2rem;
+}
+
+.muted {
+  color: var(--grey500);
+}
+
+.survey-row {
+  display: flex;
+  width: 100%;
+  /* border: 2px solid blue; */
+}
+
+.radio-input-div {
+  flex: 1;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  position: relative;
+  /* border: 2px solid red; */
+}
+
+.radio-input {
+  opacity: 0;
+  position: absolute;
+}
+
+.radio-input-div label {
+  content: "";
+  width: 50px;
+  height: 50px;
+  background: var(--grey900);
+  border-radius: 50%;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  transition: 0.25s ease;
+  position: relative;
+  z-index: 2;
+  cursor: pointer;
+  border: 1px solid var(--white);
+  box-shadow: 0px 1px 2px var(--white), 0px -1px 2px var(--white);
+}
+
+.radio-input-div:hover label {
+  text-shadow: 0px 0px 5px white;
+  transform: scale(1.1);
+}
+
+.radio-input-div:hover label::after {
+  content: "";
+  position: absolute;
+  background: var(--white);
+  inset: 0;
+  z-index: -1;
+  border-radius: 50%;
+  transform: translateY(-1rem);
+  filter: blur(10px);
+  animation: activeglow 0.5s cubic-bezier(0.175, 0.885, 0.32, 1.275) forwards;
+}
+
+@keyframes activeglow {
+  100% {
+    transform: translateY(0);
+  }
+}
+
+.radio-input-div:hover label {
+  color: black;
+}
+
+input[type="radio"]:checked + label::after {
+  /*status becomes checked when you click on a radio input */
+  content: "";
+  position: absolute;
+  background: var(--orange);
+  inset: 0;
+  z-index: -1;
+  border-radius: 50%;
+  transform: scale(0);
+  filter: blur(10px);
+  animation: illuminateglow 0.5s cubic-bezier(0.175, 0.885, 0.32, 1.275)
+    forwards;
+}
+
+@keyframes illuminateglow {
+  100% {
+    transform: scale(1);
+  }
+}
+
+button {
+  width: 100%;
+  height: 50px;
+  text-transform: uppercase;
+  font-size: 1.1rem;
+  letter-spacing: 0.25rem;
+  background: var(--orange);
+  border-radius: 2rem;
+  cursor: pointer;
+  outline: none;
+  border: none;
+  transition: 0.25s ease;
+  position: relative;
+  /* z-index: 5; */
+  overflow: hidden;
+  font-weight: 600;
+}
+
+button:hover {
+  box-shadow: 0px 0px 5px var(--orange), 0px 0px 15px var(--orange);
+}
+
+button:hover::after {
+  transform: scale(1);
+}
+
+.alert {
+  position: absolute;
+  width: 100%;
+  text-align: center;
+  background: white;
+  padding: 1rem;
+  left: 0;
+  border: 2px solid red;
+  bottom: 3rem;
+  border-radius: 0.5rem;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  color: black;
+  gap: 1.5rem;
+  border-bottom: 3px solid var(--orange);
+  transform: scale(0);
+  transition: 0.5s cubic-bezier(0.175, 0.885, 0.32, 1.275);
+}
+
+.show-alert {
+  transform: scale(1) translateY(10rem);
+}
