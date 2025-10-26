@@ -1,0 +1,154 @@
+* {
+  /*reset browser settings */
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
+}
+
+:root {
+  --blue100: hsl(225, 100%, 94%);
+  --blue700: hsl(245, 75%, 52%);
+  --blue50: hsl(225, 100%, 99%);
+  --blue75: hsl(
+    225,
+    100%,
+    97%
+  ); /*invented offset color that ??? seems to be missing */
+  --gray600: hsl(224, 23%, 55%);
+  --blue950: hsl(223, 47%, 23%);
+  --mainFont: "Red Hat Display", sans-serif;
+}
+
+.app {
+  height: 100vh;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  position: relative;
+  background: var(--blue100);
+  font-family: var(--mainFont);
+}
+
+.bg-banner {
+  position: absolute; /*removes itself from page setup so other elements arent effected by its size */
+  top: 0;
+}
+
+.summary-card-parent {
+  position: relative;
+  z-index: 5;
+  background: var(--blue50);
+  width: 400px;
+  border-radius: 1rem;
+}
+
+.summary-card-banner {
+  width: 100%;
+  position: relative;
+  /* border: 2px solid red; */
+}
+
+.summary-card-banner:hover .banner-img {
+  transform: scale(1.2) rotate(5deg);
+  filter: hue-rotate(75deg);
+}
+
+.summary-card-banner img {
+  width: 100%;
+  transition: 0.5s ease;
+}
+
+.banner-img-container {
+  position: absolute;
+  inset: 0;
+  overflow: hidden;
+  z-index: 5;
+  border-top-left-radius: 1rem;
+  border-top-right-radius: 1rem;
+}
+
+.shadow-img {
+  border-top-left-radius: 1rem;
+  border-top-right-radius: 1rem;
+}
+
+.summary-card-banner:hover .shadow-img {
+  filter: blur(15px);
+  transform: scale(1.05);
+}
+
+.summary-card-body {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: space-between;
+  text-align: center;
+  gap: 1.5rem;
+  padding: 2rem;
+}
+
+.annual-plan-row {
+  display: flex;
+  width: 100%;
+  justify-content: space-between;
+  align-items: center;
+  padding: 1rem;
+  background: var(--blue75);
+  border-radius: 1rem;
+  gap: 0.5rem;
+}
+
+.annual-text-col {
+  /* border: 1px solid red; */
+  flex: 1;
+  display: flex;
+  align-items: flex-start;
+  flex-direction: column;
+  gap: 3.5px;
+}
+
+.gray-text {
+  color: var(--gray600);
+}
+
+.bold {
+  font-weight: 800;
+}
+
+.change-btn {
+  background: transparent;
+  outline: none;
+  border: none;
+  color: var(--blue700);
+  font-weight: 600;
+  text-decoration: underline;
+  cursor: pointer;
+}
+
+.btn {
+  width: 100%;
+  padding: 0.75rem;
+  border-radius: 0.5rem;
+  cursor: pointer;
+  border: none;
+  box-shadow: 0px 0px 3px var(--gray600);
+  font-weight: 600;
+  transition: 0.25s ease;
+}
+
+.payment-btn {
+  background: var(--blue700);
+  color: var(--blue50);
+}
+
+.cancel-btn {
+  background: transparent;
+}
+
+.payment-btn:hover {
+  box-shadow: 0px 0px 5px var(--blue700), 0px 10px 10px var(--blue700);
+}
+
+.cancel-btn:hover {
+  background: var(--blue100);
+}

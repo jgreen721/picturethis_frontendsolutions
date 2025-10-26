@@ -51,6 +51,7 @@ a {
   color: var(--white);
   width: clamp(30%, 400px, 90%); /*adjusts to screen size */
   box-shadow: 2px 2px 5px var(--green);
+  transform: translateY(3rem);
 }
 
 .user-img-div {
@@ -88,4 +89,25 @@ a {
 .media-link-item:hover {
   transform: scale(0.99);
   box-shadow: 0px 2.5px 5px var(--white);
+}
+
+.header {
+  position: absolute;
+  font-size: 3rem;
+  color: white;
+  top: 2rem;
+  z-index: 5;
+  font-weight: 100;
+}
+
+.header h1 {
+  font-weight: 300;
+  text-shadow: 0px 0px 5px var(--green);
+}
+
+em {
+  background: var(--green);
+  padding: 0 1.5rem;
+  text-shadow: 0px 0px 5px black;
+  font-weight: 600;
 }
