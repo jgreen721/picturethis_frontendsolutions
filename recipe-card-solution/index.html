@@ -1,0 +1,250 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <!-- displays site properly based on user's device -->
+
+    <link
+      rel="icon"
+      type="image/png"
+      sizes="32x32"
+      href="./assets/images/favicon-32x32.png"
+    />
+
+    <title>Frontend Mentor | Recipe page</title>
+
+    <!-- Feel free to remove these styles or customise in your own stylesheet 👍 -->
+    <style>
+      .attribution {
+        font-size: 14px;
+        text-align: center;
+        position: absolute;
+        width: 100%;
+        bottom: 0;
+        font-family: var(--outfitFont);
+      }
+      .attribution a {
+        color: hsl(228, 45%, 44%);
+      }
+    </style>
+    <link rel="stylesheet" href="style.css" />
+  </head>
+  <body>
+    <div class="app">
+      <div class="recipe-card">
+        <div class="img-div"></div>
+        <header>
+          <h1>Simple Omelette Recipe</h1>
+          <p>
+            An easy and quick dish, perfect for any meal. This classic omelette
+            combines beaten eggs cooked to perfection, optionally filled with
+            your choice of cheese, vegetables, or meats.
+          </p>
+        </header>
+        <section class="prep-section section">
+          <h4 class="prep-title red-text fancy-font">Preparation time</h4>
+          <ul class="prep-list">
+            <li class="prep-item">
+              <p>
+                <span class="bold">Total:</span>
+                Approximately 10 minutes
+              </p>
+            </li>
+            <li class="prep-item">
+              <p>
+                <span class="bold">Preparation:</span>
+                5 minutes
+              </p>
+            </li>
+            <li class="prep-item">
+              <p>
+                <span class="bold">Cooking:</span>
+                5 minutes
+              </p>
+            </li>
+          </ul>
+        </section>
+        <section class="ingredients-section section">
+          <!--assign content containers to animate with intersection observer-->
+          <div class="section-content ingredients-content">
+            <h1 class="fancy-font brown-text">Ingredients</h1>
+            <ul class="ingredients-list">
+              <li class="ingredient-item">
+                <p>2-3 large eggs</p>
+              </li>
+              <li class="ingredient-item">
+                <p>Salt, to taste</p>
+              </li>
+              <li class="ingredient-item">
+                <p>Pepper, to taste</p>
+              </li>
+              <li class="ingredient-item">
+                <p>1 tablespoon of butter or oil</p>
+              </li>
+              <li class="ingredient-item">
+                <p>
+                  Optional fillings: cheese, diced vegetables, cooked meats,
+                  herbs
+                </p>
+              </li>
+            </ul>
+          </div>
+        </section>
+        <section class="instructions-section section">
+          <div class="section-content instructions-content">
+            <h1 class="fancy-font brown-text">Instructions</h1>
+            <ul class="instructions-list">
+              <li>
+                <span class="list-count bold brown-text">1.</span>
+                <span class="bold">Beat the eggs:</span>
+                <small
+                  >In a bowl, beat the eggs with a pinch of salt and pepper
+                  until they are well mixed. You can add a tablespoon of water
+                  or milk for a fluffier texture.</small
+                >
+              </li>
+              <li>
+                <span class="list-count bold brown-text">2.</span>
+                <span class="bold">Heat the pan:</span>
+                <small
+                  >Place a non-stick frying pan over medium heat and add butter
+                  or oil.</small
+                >
+              </li>
+              <li>
+                <span class="list-count bold brown-text">3.</span>
+                <span class="bold">Cook the omelette:</span>
+                <small
+                  >Once the butter is melted and bubbling, pour in the eggs.
+                  Tilt the pan to ensure the eggs evenly coat the
+                  surface.</small
+                >
+              </li>
+              <li>
+                <span class="list-count bold brown-text">4.</span>
+                <span class="bold">Add fillings(optional):</span>
+                <small
+                  >In a bowl, beat the eggs with a pinch of salt and pepper
+                  until they are well mixed. You can add a tablespoon of water
+                  or milk for a fluffier texture.</small
+                >
+              </li>
+              <li>
+                <span class="list-count bold brown-text">5.</span>
+                <span class="bold">Fold and serve:</span>
+                <small
+                  >As the omelette continues to cook, carefully lift one edge
+                  and fold it over the fillings. Let it cook for another minute,
+                  then slide it onto a plate.</small
+                >
+              </li>
+              <li>
+                <span class="list-count bold brown-text">6.</span>
+                <span class="bold">Enjoy:</span>
+                <small>
+                  Serve hot, with additional salt and pepper if needed.</small
+                >
+              </li>
+            </ul>
+          </div>
+          <div class="parallax-section"></div>
+        </section>
+        <section class="nutrition-section section-content\">
+          <div class="section-content nutrition-content">
+            <h1 class="fancy-font brown-text">Nutrition</h1>
+            <p>
+              The table below shows nutritional values per serving without the
+              additional fillings.
+            </p>
+
+            <ul class="nutrition-list">
+              <li class="nutrition-item">
+                <p>Calories</p>
+                <p class="brown-text bold">277kcal</p>
+              </li>
+              <li class="nutrition-item">
+                <p>Carbs</p>
+                <p class="brown-text bold">0g</p>
+              </li>
+              <li class="nutrition-item">
+                <p>Protein</p>
+                <p class="brown-text bold">20g</p>
+              </li>
+              <li class="nutrition-item">
+                <p>Fat</p>
+                <p class="brown-text bold">22g</p>
+              </li>
+            </ul>
+          </div>
+        </section>
+      </div>
+
+      <div class="attribution">
+        Challenge by
+        <a href="https://www.frontendmentor.io?ref=challenge" target="_blank"
+          >Frontend Mentor</a
+        >.Coded by
+        <a href="https://www.youtube.com/@PictureThisCoding"
+          >@PictureThisCoding</a
+        >.
+      </div>
+    </div>
+    <script>
+      let prepSection = document.querySelector(".prep-section");
+      let ingredientsSection = document.querySelector(".ingredients-section");
+      let instructionsSection = document.querySelector(".instructions-section");
+      let nutritionSection = document.querySelector(".nutrition-section");
+      let sections = [
+        prepSection,
+        ingredientsSection,
+        instructionsSection,
+        nutritionSection,
+      ];
+      console.log(sections);
+      /*we will attach each content section to intersection observer that tracks 
+      a users page scroll and signals when an observed element has hit the view port
+      where we will attach a css class that triggers a revealing animation */
+      let observer = new IntersectionObserver(animateSection);
+      sections.map((section) => observer.observe(section));
+
+      function animateSection(entries) {
+        entries.forEach((entry) => {
+          // console.log(entry);
+          if (entry.isIntersecting) {
+            let sectionName =
+              entry.target.classList; /*this gives us an array of classnames */
+            sectionName =
+              sectionName[0].split(
+                "-"
+              )[0]; /*parse,manipulate string to get desired portion */
+            console.log(sectionName);
+
+            switch (sectionName) {
+              case "ingredients":
+                entry.target
+                  .querySelector(".section-content")
+                  .classList.add("slidein");
+                break;
+
+              case "instructions":
+                entry.target
+                  .querySelector(".section-content")
+                  .classList.add("slidedown");
+                break;
+
+              case "nutrition":
+                entry.target
+                  .querySelector(".section-content")
+                  .classList.add("clearblur");
+                break;
+
+              default:
+                console.log("unknown element! :(");
+            }
+          }
+        });
+      }
+    </script>
+  </body>
+</html>
