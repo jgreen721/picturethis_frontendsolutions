@@ -1,0 +1,221 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <!-- displays site properly based on user's device -->
+
+    <link
+      rel="icon"
+      type="image/png"
+      sizes="32x32"
+      href="./assets/images/favicon-32x32.png"
+    />
+
+    <title>Frontend Mentor | News homepage</title>
+
+    <!-- Feel free to remove these styles or customise in your own stylesheet 👍 -->
+    <style>
+      .attribution {
+        font-size: 11px;
+        text-align: center;
+      }
+      .attribution a {
+        color: hsl(228, 45%, 44%);
+      }
+    </style>
+    <link rel="stylesheet" href="style.css" />
+  </head>
+  <body>
+    <div class="app">
+      <nav class="navbar animate-nav">
+        <div class="logo-div">
+          <img class="logo-img" src="assets/images/logo.svg" alt="site-logo" />
+        </div>
+        <ul class="site-links desktop">
+          <li class="site-link-item">
+            <a style="--link: 'Home'" href="" class="site-link">Home</a>
+          </li>
+          <li class="site-link-item">
+            <a style="--link: 'New'" href="" class="site-link">New</a>
+          </li>
+          <li class="site-link-item">
+            <a style="--link: 'Popular'" href="" class="site-link">Popular</a>
+          </li>
+          <li class="site-link-item">
+            <a style="--link: 'Trending'" href="" class="site-link">Trending</a>
+          </li>
+          <li class="site-link-item">
+            <a style="--link: 'Categories'" href="" class="site-link"
+              >Categories</a
+            >
+          </li>
+        </ul>
+        <div class="mobile-menu-btn-div mobile">
+          <button onclick="toggleMobileMenu()" class="mobile-menu-btn icon-btn">
+            <img src="assets/images/icon-menu.svg" alt="icon-menu" />
+          </button>
+        </div>
+      </nav>
+
+      <!--Mobile Menu Overlay -->
+      <div class="mobile-menu-overlay mobile hide-mobile-menu">
+        <div class="mobile-menu">
+          <div class="flex-end-row">
+            <button
+              onclick="toggleMobileMenu()"
+              class="mobile-close-btn icon-btn"
+            >
+              <img
+                class="close-icon"
+                src="assets/images/icon-menu-close.svg"
+                alt=""
+              />
+            </button>
+          </div>
+
+          <ul class="mobile-links">
+            <li class="mobile-link-item">
+              <a href="#" class="mobile-link">Home</a>
+            </li>
+            <li class="mobile-link-item">
+              <a href="#" class="mobile-link">New</a>
+            </li>
+            <li class="mobile-link-item">
+              <a href="#" class="mobile-link">Popular</a>
+            </li>
+            <li class="mobile-link-item">
+              <a href="#" class="mobile-link">Trending</a>
+            </li>
+            <li class="mobile-link-item">
+              <a href="#" class="mobile-link">Categories</a>
+            </li>
+          </ul>
+        </div>
+      </div>
+      <!-- End Mobile Overlay -->
+      <section class="top-section">
+        <div class="top-section-content animate-top-section">
+          <div class="top-section-col">
+            <div class="img-div">
+              <picture>
+                <source
+                  media="(min-width:650px)"
+                  srcset="assets/images/image-web-3-desktop.jpg"
+                />
+                <img src="assets/images/image-web-3-mobile.jpg" alt="img" />
+              </picture>
+            </div>
+            <div class="top-section-row">
+              <div class="top-section-bottom-row-col">
+                <h1 class="giant-h1">
+                  The Bright Future of Web <span class="shadow">3.0</span>
+                </h1>
+              </div>
+              <div class="top-section-bottom-row-col">
+                <p>
+                  We dive into the next evolution of the web that claims to put
+                  the power of the platforms back into the hands of the people.
+                  But is it really fulfilling its promise?
+                </p>
+                <button class="read-more-btn btn">Read More</button>
+              </div>
+            </div>
+          </div>
+          <div class="top-section-col">
+            <h2 class="orange-text headlines-header-h2">New</h2>
+            <ul class="headlines">
+              <li class="headline-item">
+                <h4 class="bold">Hydrogen vs Electric Cars</h4>
+                <small class="thin">
+                  Will hydrogen-fueled cars ever catch up to EVs?
+                </small>
+              </li>
+              <li class="headline-item">
+                <h4 class="bold">The Downside of AI Artistry</h4>
+                <small class="thin">
+                  What are the possible adverse effects of on-demand AI image
+                  generation?
+                </small>
+              </li>
+              <li style="--delay: 2s" class="headline-item">
+                <h4 class="bold">Is VC Funding Drying Up?</h4>
+                <small class="thin">
+                  Private funding by VC firms is down 50% YOY. We take a look at
+                  what that means.
+                </small>
+              </li>
+            </ul>
+          </div>
+        </div>
+      </section>
+      <section class="bottom-section">
+        <ul class="section-list">
+          <li style="--delay: 1s" class="section-item">
+            <div>
+              <div class="section-item-img-div img-div">
+                <img src="assets/images/image-retro-pcs.jpg" alt="retro-img" />
+              </div>
+            </div>
+            <div class="section-item-content">
+              <h3 class="red-text">01</h3>
+              <h5>Reviving Retro PCs</h5>
+              <p class="thin">
+                What happens when old PCs are given modern upgrades?
+              </p>
+            </div>
+          </li>
+          <li style="--delay: 1.5s" class="section-item">
+            <div>
+              <div class="section-item-img-div img-div">
+                <img
+                  src="assets/images/image-top-laptops.jpg"
+                  alt="laptop-img"
+                />
+              </div>
+            </div>
+            <div class="section-item-content">
+              <h3 class="red-text">02</h3>
+              <h5>Top 10 Laptops of 2022</h5>
+              <p class="thin">Our best picks for varioius budgets.</p>
+            </div>
+          </li>
+          <li style="--delay: 2s" v class="section-item">
+            <div>
+              <div class="section-item-img-div img-div">
+                <img
+                  src="assets/images/image-gaming-growth.jpg"
+                  alt="gaming-growth-img"
+                />
+              </div>
+            </div>
+            <div class="section-item-content">
+              <h3 class="red-text">03</h3>
+              <h5>The Growth of Gaming</h5>
+              <p class="thin">
+                How the pandemic has sparked fresh opportunities.
+              </p>
+            </div>
+          </li>
+        </ul>
+      </section>
+      <div class="attribution">
+        Challenge by
+        <a href="https://www.frontendmentor.io?ref=challenge" target="_blank"
+          >Frontend Mentor</a
+        >. Coded by
+        <a target="_blank" href="https://youtube.com/@PictureThisCoding"
+          >@PictureThisCoding</a
+        >.
+      </div>
+    </div>
+
+    <script>
+      function toggleMobileMenu() {
+        document
+          .querySelector(".mobile-menu-overlay")
+          .classList.toggle("hide-mobile-menu");
+      }
+    </script>
+  </body>
+</html>
