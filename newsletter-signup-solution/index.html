@@ -1,0 +1,261 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <!-- displays site properly based on user's device -->
+
+    <link
+      rel="icon"
+      type="image/png"
+      sizes="32x32"
+      href="./assets/images/favicon-32x32.png"
+    />
+
+    <title>
+      Frontend Mentor | Newsletter sign-up form with success message
+    </title>
+
+    <!-- Feel free to remove these styles or customise in your own stylesheet 👍 -->
+    <style>
+      .attribution {
+        font-size: 15px;
+        text-align: center;
+        position: absolute;
+        width: 100%;
+        bottom: 0;
+        padding: 1rem;
+        color: var(--white);
+      }
+      .attribution a {
+        color: hsl(228, 45%, 44%);
+      }
+    </style>
+    <link rel="stylesheet" href="style.css" />
+  </head>
+  <body>
+    <!-- Sign-up form start -->
+    <!-- Main Card -->
+    <div class="main-card">
+      <!-- <div class="main-card-content"> -->
+      <div class="mobile mobile-img-col">
+        <div class="img-div">
+          <picture>
+            <source
+              media="min-width:475px"
+              srcset="assets/images/illustration-sign-up-tablet.svg"
+            />
+            <img
+              src="assets/images/illustration-sign-up-mobile.svg"
+              alt="img"
+              class="main-img"
+            />
+          </picture>
+        </div>
+        <div class="shadow-img-div">
+          <picture>
+            <source
+              media="(min-width:550px)"
+              srcset="assets/images/illustration-sign-up-tablet.svg"
+            />
+            <img
+              src="assets/images/illustration-sign-up-mobile.svg"
+              alt="img"
+              class="glow-shadow-img"
+            />
+          </picture>
+        </div>
+      </div>
+      <div class="col">
+        <div class="col-content">
+          <h1 class="fade-in">Stay Updated!</h1>
+          <p class="lower-fade">
+            Join <span class="followers-count">60,000+</span> product managers
+            receiving monthly updates on:
+          </p>
+          <ul class="features">
+            <li style="--delay: 0.25s" class="feature-item">
+              <div class="feature-item-content">
+                <div class="feature-item-icon-div">
+                  <img
+                    class="feature-icon"
+                    src="assets/images/icon-list.svg"
+                    alt="icon"
+                  />
+                </div>
+                <div class="wrapper">
+                  <p>Product discovery and building what matters</p>
+                </div>
+              </div>
+            </li>
+            <li style="--delay: 0.5s" class="feature-item">
+              <div class="feature-item-content">
+                <div class="feature-item-icon-div">
+                  <img
+                    class="feature-icon"
+                    src="assets/images/icon-list.svg"
+                    alt="icon"
+                  />
+                </div>
+                <div class="wrapper">
+                  <p>Measuring to ensure updates are a success</p>
+                </div>
+              </div>
+            </li>
+            <li style="--delay: 0.75s" class="feature-item">
+              <div class="feature-item-content">
+                <div class="feature-item-icon-div">
+                  <img
+                    class="feature-icon"
+                    src="assets/images/icon-list.svg"
+                    alt="icon"
+                  />
+                </div>
+                <div class="wrapper">
+                  <p>And much more!</p>
+                </div>
+              </div>
+            </li>
+          </ul>
+          <form>
+            <div class="form-div">
+              <label for="email"
+                >Email address
+                <div class="error-div">
+                  <p class="error-msg hide-error-msg">Valid Email Required</p>
+                </div>
+                <input
+                  type="text"
+                  class="form-control"
+                  id="email"
+                  placeholder="email@company.com"
+                  name="email"
+                  autocomplete="off"
+                />
+                <div class="error-cloud hide-error-cloud"></div>
+              </label>
+            </div>
+            <button class="btn subscribe-btn">
+              <div class="btn-overlay"></div>
+              <div class="btn-content">Subscribe to monthly newsletter</div>
+            </button>
+          </form>
+        </div>
+      </div>
+      <div class="col desktop">
+        <div class="img-div">
+          <img
+            src="assets/images/illustration-sign-up-desktop.svg"
+            alt="main-img"
+          />
+        </div>
+        <div class="shadow-img-div">
+          <img
+            class="glow-shadow-img"
+            src="assets/images/illustration-sign-up-desktop.svg"
+            alt="shadow-ui-img"
+          />
+        </div>
+      </div>
+      <!-- </div> -->
+    </div>
+    <!-- End Main Card -->
+
+    <!-- Thanks Card -->
+    <div class="thanks-card hide-thanks-card">
+      <div class="thanks-img-div">
+        <img src="assets/images/icon-success.svg" alt="" />
+      </div>
+      <header class="thanks-header">
+        <div class="flex-h1">
+          <h1><em>Thanks</em></h1>
+          <h1>for</h1>
+        </div>
+        <h1>subscribing</h1>
+      </header>
+      <p>
+        A confirmation email has been sent to
+        <span class="bold" id="user-email">ash@loremcompany.com</span>. Please
+        open it and click the button inside to confirm your subscription.
+      </p>
+      <button class="btn">Dismiss message</button>
+    </div>
+    <!-- End Thanks Card -->
+    <!-- </section> -->
+
+    <div class="attribution">
+      Challenge by
+      <a href="https://www.frontendmentor.io?ref=challenge" target="_blank"
+        >Frontend Mentor</a
+      >. Coded by
+      <a href="https://www.youtube.com/@PictureThisCoding">@PictureThisCoding</a
+      >.
+    </div>
+
+    <script>
+      let errorMsg = document.querySelector(".error-msg");
+      let errorCloud = document.querySelector(".error-cloud");
+      let emailInput = document.querySelector("input[name='email']");
+      let mainCard = document.querySelector(".main-card");
+      let thanksCard = document.querySelector(".thanks-card");
+
+      document.querySelector("form").onsubmit = (e) => {
+        //prevent browser refresh
+        e.preventDefault();
+        let formData = new FormData(e.target);
+        /*regular expression that tests for valid email pattern */
+        let regex = /[A-Za-z0-9._%+-]+@[A-Za-z0-9.-]+\.[A-Za-z]{2,}/;
+        let email = formData.get("email");
+        console.log("Email", email);
+        console.log(regex.test(email));
+      }
+
+        // if (!email || email.indexOf("@") == -1) {
+        //   errorMsg.classList.remove("hide-error-msg");
+        //   errorCloud.classList.remove("hide-error-cloud");
+        //   emailInput.classList.add("error-form");
+        //   return;
+        // }
+        if (!regex.test(email)) {
+          errorMsg.classList.remove("hide-error-msg");
+          errorCloud.classList.remove("hide-error-cloud");
+          emailInput.classList.add("error-form");
+          return;
+        }
+
+        handleShowSuccess(email);
+      };
+
+      document.querySelector("input[name='email']").oninput = () => {
+        if (!errorMsg.classList.contains("hide-error-msg"))
+          errorMsg.classList.add("hide-error-msg");
+        errorCloud.classList.add("hide-error-cloud");
+        emailInput.classList.remove("error-form");
+      };
+
+      function handleShowSuccess(email) {
+        mainCard.classList.add("hide-card");
+        setTimeout(() => {
+          thanksCard.classList.remove("hide-thanks-card");
+          thanksCard.classList.add("show-card");
+          console.log("Email", email);
+          document.getElementById("user-email").textContent = email;
+        }, 1750);
+      }
+
+      let shadowImgs = document.querySelectorAll(".glow-shadow-img");
+
+      document.querySelector(".subscribe-btn").onmouseenter = (e) => {
+        shadowImgs.forEach((img) => {
+          img.style.filter = "blur(20px";
+        });
+      };
+
+      document.querySelector(".subscribe-btn").onmouseleave = (e) => {
+        shadowImgs.forEach((img) => {
+          img.style.filter = "blur(0px";
+        });
+      };
+    </script>
+  </body>
+</html>
