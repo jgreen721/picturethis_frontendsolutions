@@ -1,0 +1,125 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <!-- displays site properly based on user's device -->
+
+    <link
+      rel="icon"
+      type="image/png"
+      sizes="32x32"
+      href="./images/favicon-32x32.png"
+    />
+    <link rel="preconnect" href="https://fonts.googleapis.com" />
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+    <link
+      href="https://fonts.googleapis.com/css2?family=DM+Sans:ital,opsz,wght@0,9..40,100..1000;1,9..40,100..1000&display=swap"
+      rel="stylesheet"
+    />
+    <title>Frontend Mentor | Expenses chart component</title>
+
+    <!-- Feel free to remove these styles or customise in your own stylesheet 👍 -->
+    <style>
+      .attribution {
+        font-size: 14px;
+        text-align: center;
+        position: absolute;
+        width: 100%;
+        text-align: center;
+        bottom: 0;
+        padding: 1rem 0;
+        font-family: var(--mainFont);
+      }
+      .attribution a {
+        color: hsl(228, 45%, 44%);
+        text-decoration: none;
+        color: var(--red);
+      }
+    </style>
+    <link rel="stylesheet" href="style.css" />
+  </head>
+  <body>
+    <main class="balance-chart">
+      <!-- Top Row -->
+      <div class="balance-chart-top-row">
+        <div class="balance-div">
+          <p class="users-balance-p">My Balance</p>
+          <h2>$921.48</h2>
+        </div>
+        <div class="chart-logo-div">
+          <div class="chart-logo-white-border chart-logo chart-logo-fill"></div>
+          <div
+            class="chart-logo-black-circle chart-logo chart-logo-border"
+          ></div>
+        </div>
+      </div>
+      <!-- Main Section -->
+      <section class="chart-section">
+        <h1>Spending - Last 7 days</h1>
+        <ul class="chart">
+          <li>
+            <h2>Loading Data...</h2>
+          </li>
+        </ul>
+        <div class="divider"></div>
+        <div class="balance-chart-bottom-row">
+          <div class="chart-bottom-row-col">
+            <p class="muted">Total this month</p>
+            <h1 class="giant-h1">$478.33</h1>
+          </div>
+          <div class="chart-bottom-row-col text-end">
+            <h5>
+              <strong>+2.4%</strong>
+            </h5>
+            <p class="muted">from last month</p>
+          </div>
+        </div>
+      </section>
+    </main>
+
+    <div class="attribution">
+      Challenge by
+      <a target="_blank" href="https://www.frontendmentor.io?ref=challenge"
+        >Frontend Mentor</a
+      >. Coded by <a href="#">@PictureThisCoding</a>.
+    </div>
+
+    <script>
+      fetch("data.json")
+        .then((res) => res.json())
+        .then((res) => {
+          console.log(res);
+          setTimeout(() => {
+            renderChart(res);
+          }, 2500);
+        });
+
+      function renderChart(data) {
+        let highestSpentDay;
+        document.querySelector(".chart").innerHTML = ""; //clear loader
+        data.forEach((item, idx) => {
+          if (!highestSpentDay || highestSpentDay.total < item.amount) {
+            highestSpentDay = { idx, total: item.amount };
+          }
+          let chartItem = document.createElement("li");
+          let dayEl = document.createElement("p");
+          dayEl.className = "day-p muted";
+          dayEl.textContent = item.day;
+          let chartBar = document.createElement("div");
+          chartBar.className = "chart-bar";
+          chartBar.style.height = `${item.amount * 2.5}px`;
+          chartItem.appendChild(chartBar);
+          chartItem.appendChild(dayEl);
+          chartItem.dataset.total = `$${item.amount.toFixed(2)}`;
+
+          document.querySelector(".chart").appendChild(chartItem);
+        });
+
+        document
+          .querySelectorAll(".chart-bar")
+          [highestSpentDay.idx].classList.add("highest-spent");
+      }
+    </script>
+  </body>
+</html>
