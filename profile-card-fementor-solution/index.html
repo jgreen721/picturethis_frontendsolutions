@@ -1,0 +1,212 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <!-- displays site properly based on user's device -->
+
+    <link
+      rel="icon"
+      type="image/png"
+      sizes="32x32"
+      href="./images/favicon-32x32.png"
+    />
+    <link rel="preconnect" href="https://fonts.googleapis.com" />
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+    <link
+      href="https://fonts.googleapis.com/css2?family=Kumbh+Sans:wght@100..900&display=swap"
+      rel="stylesheet"
+    />
+    <title>Frontend Mentor | Profile card component</title>
+
+    <!-- Feel free to remove these styles or customise in your own stylesheet 👍 -->
+    <style>
+      .attribution {
+        position: absolute;
+        width: 100%;
+        padding: 1rem;
+        font-size: 11px;
+        text-align: center;
+        z-index: 10;
+        bottom: 0;
+      }
+      .attribution a {
+        color: hsl(228, 45%, 44%);
+      }
+    </style>
+    <link rel="stylesheet" href="styles.css" />
+  </head>
+  <body>
+    <div class="app">
+      <div class="bg-img-overlay">
+        <img class="top-img" src="images/bg-pattern-top.svg" alt="" />
+        <img
+          style="--duration: 5s; --delay: 3s"
+          class="top-img-shadow"
+          src="images/bg-pattern-top.svg"
+          alt=""
+        />
+        <img class="bottom-img" src="images/bg-pattern-top.svg" alt="" />
+        <img
+          style="--duration: 8s; --delay: 1s"
+          class="bottom-img-shadow"
+          src="images/bg-pattern-top.svg"
+          alt=""
+        />
+      </div>
+      <section class="profile-card">
+        <div class="card-bg-banner">
+          <div class="card-bg-banner-content">
+            <img class="left-bg-img" src="images/bg-pattern-card.svg" alt="" />
+            <img src="images/bg-pattern-card.svg" alt="" />
+            <img class="right-bg-img" src="images/bg-pattern-card.svg" alt="" />
+            <img class="left-bg-img" src="images/bg-pattern-card.svg" alt="" />
+          </div>
+        </div>
+        <div class="card-user-content">
+          <div class="user-img-div">
+            <div class="user-img-border-overlay"></div>
+            <div class="user-img-content">
+              <img
+                class="user-img"
+                src="/images/image-victor.jpg"
+                loading="lazy"
+                alt="user-img"
+              />
+            </div>
+          </div>
+          <div class="username-div">
+            <div class="progress-bar">
+              <div class="progress"></div>
+            </div>
+          </div>
+          <div class="location-div">
+            <div id="location"></div>
+          </div>
+          <div class="user-stats-section">
+            <ul class="user-stats">
+              <li data-category="followers" class="user-stat-item">
+                <div class="user-stats-loader">
+                  <div
+                    style="--loading_percent: 0%"
+                    class="user-stats-loading-overlay"
+                  ></div>
+                  <div class="user-stats-loader-content">
+                    <h5><span class="loading-count">0</span>%</h5>
+                  </div>
+                </div>
+              </li>
+              <li data-category="likes" class="user-stat-item">
+                <div class="user-stats-loader">
+                  <div
+                    style="--loading_percent: 0%"
+                    class="user-stats-loading-overlay"
+                  ></div>
+                  <div class="user-stats-loader-content">
+                    <h5><span class="loading-count">0</span>%</h5>
+                  </div>
+                </div>
+              </li>
+              <li data-category="photos" class="user-stat-item">
+                <div class="user-stats-loader">
+                  <div
+                    style="--loading_percent: 0%"
+                    class="user-stats-loading-overlay"
+                  ></div>
+                  <div class="user-stats-loader-content">
+                    <h5><span class="loading-count">0</span>%</h5>
+                  </div>
+                </div>
+              </li>
+            </ul>
+          </div>
+        </div>
+      </section>
+      <div class="attribution">
+        Challenge by
+        <a href="https://www.frontendmentor.io?ref=challenge" target="_blank"
+          >Frontend Mentor</a
+        >. Coded by
+        <a href="https://www.youtube.com/@PictureThisCoding"
+          >@PictureThisCoding</a
+        >.
+      </div>
+    </div>
+
+    <script>
+      let progressBar = document.querySelector(".progress-bar");
+      let progressEl = document.querySelector(".progress");
+      let progress_count = 0;
+      function runProgress() {
+        progressEl.style.width = `${progress_count}%`;
+        if (progress_count < 101) {
+          progress_count++;
+          setTimeout(() => runProgress(), 5);
+        } else {
+          document.querySelector(".username-div").removeChild(progressBar);
+          let firstNameEl = document.createElement("h1");
+          firstNameEl.className = "firstname-h1";
+          firstNameEl.textContent = "Victor";
+          let lastNameEl = document.createElement("h1");
+          lastNameEl.className = "lastname-h1";
+          lastNameEl.textContent = "Crest";
+          let ageEl = document.createElement("h2");
+          ageEl.className = "age-h2";
+          ageEl.textContent = 26;
+          document.querySelector(".username-div").appendChild(firstNameEl);
+          document.querySelector(".username-div").appendChild(lastNameEl);
+          document.querySelector(".username-div").appendChild(ageEl);
+          document.querySelector(
+            "#location"
+          ).innerHTML = `<h3 class="location-h3">London</h3>`;
+          document.querySelector(".user-img-div").classList.add("ready-img");
+        }
+      }
+
+      runProgress();
+      let userData = {
+        followers: "80K",
+        likes: "803K",
+        photos: "1.4K",
+      };
+      let userStatsLoaders = document.querySelectorAll(".user-stats-loader");
+
+      function userStatsProgress(loader) {
+        let loaderOverlay = loader.querySelector(".user-stats-loading-overlay");
+        // console.log(loaderOverlay);
+        let progress =
+          getComputedStyle(loaderOverlay).getPropertyValue("--loading_percent");
+        // console.log("Progress", progress);
+        let progressInt = parseInt(progress);
+        // console.log("Progress", progressInt);
+        progressInt += Math.floor(Math.random() * 25);
+        progressInt = progressInt < 101 ? progressInt : 101;
+        loaderOverlay.style.setProperty("--loading_percent", `${progressInt}%`);
+        loader.querySelector(".loading-count").textContent = progressInt;
+        if (progressInt < 101) setTimeout(() => userStatsProgress(loader), 250);
+        else clearLoaderAndRenderData(loader);
+      }
+
+      // userStatsProgress(userStatsLoaders[0]);
+      Array.from(userStatsLoaders).map((loader) => userStatsProgress(loader));
+
+      function clearLoaderAndRenderData(loader) {
+        loader.classList.add("fade-away");
+        setTimeout(() => {
+          let statItem = loader.closest(".user-stat-item");
+          statItem.removeChild(loader);
+          let dataCategory = statItem.getAttribute("data-category");
+          console.log(dataCategory);
+          let h3Data = document.createElement("h2");
+          let h5Category = document.createElement("h4");
+          h3Data.textContent = userData[dataCategory];
+          h5Category.textContent = dataCategory;
+          h3Data.className = "h3-data";
+          h5Category.className = "h5-category";
+          statItem.appendChild(h3Data);
+          statItem.appendChild(h5Category);
+        }, 1000);
+      }
+    </script>
+  </body>
+</html>
