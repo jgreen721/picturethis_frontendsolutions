@@ -1,0 +1,229 @@
+* {
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
+}
+
+:root {
+  --gold: hsl(31, 77%, 52%);
+  --cyan: hsl(184, 100%, 22%);
+  --green: hsl(179, 100%, 13%);
+  --white: hsla(0, 0%, 100%, 0.75);
+  --gray: hsl(0, 0%, 95%);
+  --shadow: rgb(20, 20, 20);
+  --lexFont: "Lexend Deca", sans-serif;
+  --shouldersFont: "Big Shoulders", sans-serif;
+}
+
+.app {
+  min-height: 100vh;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  padding: 2rem 4rem;
+  background: var(--gray);
+  position: relative;
+  overflow: hidden;
+}
+
+.bg-overlay {
+  position: absolute;
+  inset: 0;
+}
+
+.bg-overlay::after {
+  content: "";
+  position: absolute;
+  inset: 0;
+  background: var(--shadow);
+  opacity: 65%;
+}
+
+.bg-circle {
+  position: absolute;
+  height: 100%;
+  width: 100%;
+  border-radius: 50%;
+  top: -50%;
+  left: -50%;
+  filter: blur(15px);
+  animation: scale-circles var(--duration) linear infinite;
+}
+
+@keyframes scale-circles {
+  0% {
+    transform: scale(1);
+  }
+  20% {
+    transform: scaleX(1.2) scaleY(1.4);
+  }
+  40% {
+    transform: scaleX(0.9) scaleY(1.1);
+  }
+  60% {
+    transform: scaleX(1.4) scaleY(1.2);
+  }
+  80% {
+    transform: scale(1) scaleY(1.7);
+  }
+  100% {
+    transform: scale(1);
+  }
+}
+
+.gold-circle {
+  background: var(--gold);
+  top: auto;
+  bottom: -25%;
+}
+
+.green-circle {
+  background: var(--green);
+  left: auto;
+  right: -25%;
+}
+
+.cyan-circle {
+  background: var(--cyan);
+}
+
+.main-card {
+  display: flex;
+  width: clamp(55%, 550px, 100%);
+  box-shadow: 0px 0px 0px var(--shadow);
+  border-radius: 0.5rem;
+  z-index: 2;
+}
+
+.sedans {
+  --card_color: var(--gold);
+  border-top-left-radius: 0.5rem;
+  border-bottom-left-radius: 0.5rem;
+}
+
+.suvs {
+  --card_color: var(--cyan);
+}
+
+.luxury {
+  --card_color: var(--green);
+  border-top-right-radius: 0.5rem;
+  border-bottom-right-radius: 0.5rem;
+}
+
+.card-column {
+  --column-color: var(--card_color);
+  display: flex;
+  flex-direction: column;
+  gap: 2rem;
+  align-items: flex-start;
+  justify-content: space-between;
+  position: relative;
+  padding: 2rem;
+  color: var(--gray);
+  cursor: pointer;
+  transition: 0.25s ease;
+  background: var(--column-color);
+}
+
+.intro-animate {
+  filter: blur(30px);
+  opacity: 0;
+  animation: intro-animate 1s var(--delay) forwards;
+}
+
+@keyframes intro-animate {
+  100% {
+    opacity: 1;
+    filter: blur(0px);
+  }
+}
+
+h1 {
+  text-transform: uppercase;
+  font-family: var(--shouldersFont);
+}
+
+p {
+  font-weight: 200;
+  font-family: var(--lexFont);
+  text-shadow: 0px 0px 1px var(--shadow);
+}
+
+.card-column button {
+  --btn-color: var(--column-color);
+}
+
+button {
+  border-radius: 2rem;
+  height: 45px;
+  width: 125px;
+  white-space: nowrap;
+  outline: none;
+  border: none;
+  font-weight: 600;
+  cursor: pointer;
+  color: var(--btn-color);
+  transition: 0.25s ease;
+  outline: none;
+  margin-top: 3rem;
+}
+
+button:hover {
+  box-shadow: 0px 0px 10px var(--btn-color) inset,
+    3px 3px 5px rgba(25, 25, 25, 0.35);
+  transform: scale(1.1);
+  text-shadow: 0px 0px 2px var(--btn-color);
+}
+
+.h1-title-row {
+  display: flex;
+  align-items: center;
+  width: 100%;
+  gap: 1rem;
+}
+
+.car-tunnel {
+  box-shadow: 5px 0px 10px rgba(25, 25, 25, 0.35) inset;
+  flex: 1;
+  border-radius: 1rem;
+  overflow: hidden;
+  opacity: 0;
+  transform: scaleX(0);
+  transform-origin: left;
+  transition: 0.5s ease;
+}
+
+.card-column:hover .car-tunnel {
+  opacity: 1;
+  transform: scaleX(1);
+}
+
+.driving-car-img {
+  animation: drivingcar 2s 0.5s linear infinite;
+}
+
+@keyframes drivingcar {
+  0% {
+    transform: translateX(-100px);
+  }
+  100% {
+    transform: translateX(500px);
+  }
+}
+
+@media screen and (max-width: 750px) {
+  .main-card {
+    flex-direction: column;
+  }
+
+  .sedans {
+    border-bottom-left-radius: 0;
+    border-top-right-radius: 0.5rem;
+  }
+
+  .luxury {
+    border-top-right-radius: 0;
+    border-bottom-left-radius: 0.5rem;
+  }
+}
